@@ -16,7 +16,8 @@ public class Contact {
 
     private void addContact() {
         user.add(Contact);
-        }
+    }
+        
     String getName() {
         return name;
     }
@@ -28,3 +29,4 @@ public class Contact {
     String getEmail() {
         return email;
     }
+}
