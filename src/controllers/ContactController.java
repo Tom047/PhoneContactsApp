@@ -41,6 +41,6 @@ public class ContactController {
     public String getAllContacts() {
         ArrayList<Contact> contacts = repo.getAllContacts();
 
-        return contacts.toString();
+        return ((contacts.isEmpty()) ? "There is no contacts!" : contacts.toString());
     }
 }
