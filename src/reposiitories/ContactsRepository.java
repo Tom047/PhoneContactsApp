@@ -66,54 +66,6 @@ public class ContactsRepository implements IContactsRepository {
         return false;
     }
 
-    public boolean editContactName(int id, String name) {
-        Connection con = null;
-        try {
-            con = db.getConnection();
-            String sql = "UPDATE contacts SET name = ? WHERE id = ?";
-            PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1, name);
-            st.setInt(2, id);
-            st.execute();
-            return true;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        return false;
-    }
-
-    public boolean editContactPhone(int id, String phone) {
-        Connection con = null;
-        try {
-            con = db.getConnection();
-            String sql = "UPDATE contacts SET phone = ? WHERE id = ?";
-            PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1, phone);
-            st.setInt(2, id);
-            st.execute();
-            return true;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        return false;
-    }
-
     @Override
     public boolean editContact(int id, String param, String newValue) {
         Connection con = null;
