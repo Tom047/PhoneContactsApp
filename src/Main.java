@@ -40,9 +40,6 @@ public class Main {
                 case (5):
                     service.findContactMenu();
                     break;
-                case (6):
-                    //
-                    break;
                 case (0):
                     stop = false;
                     break;
@@ -57,7 +54,6 @@ public class Main {
         System.out.println("3. Edit contact");
         System.out.println("4. Remove contact");
         System.out.println("5. Find contact");
-        System.out.println("6. Call history");
         System.out.println("0. Exit");
     }
 }

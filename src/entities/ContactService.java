@@ -19,6 +19,13 @@ public class ContactService {
     public void getAllContactsMenu() {
         String response = controller.getAllContacts();
         System.out.println(response);
+        System.out.println("To get information about a contact, enter the id.");
+        System.out.println("Enter 0 to exit.");
+        int id = scanner.nextInt();
+        if(id != 0) {
+            response = controller.getContact(id);
+            System.out.println(response);
+        }
     }
 
     public void addContactMenu() {
