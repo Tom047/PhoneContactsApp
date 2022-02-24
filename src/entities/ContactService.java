@@ -1,7 +1,10 @@
 package entities;
 
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import controllers.ContactController;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class ContactService {
@@ -28,6 +31,44 @@ public class ContactService {
         if(email.equals("0")) email = "";
 
         String response = controller.createContact(name, phone, email);
+        System.out.println(response);
+    }
+
+    public void editContactMenu() {
+        System.out.println("Please chose id");
+        int id = scanner.nextInt();
+
+        System.out.println("What setting do you want to change?");
+        System.out.println("1. Name");
+        System.out.println("2. Phone");
+        System.out.println("3. Email");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter new value");
+
+        String newValue = scanner.nextLine();
+        String response;
+        switch (choice) {
+            case 1:
+                response = controller.editContact(id, "name", newValue);
+                break;
+            case 2:
+                PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+                try {
+                    newValue = phoneUtil.format(phoneUtil.parse(newValue, "KZ"), PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
+                    response = controller.editContact(id, "phone", newValue);
+                } catch (NumberParseException e) {
+                    System.err.println("NumberParseException was thrown: " + e.toString());
+                    response = "Contact edition was failed!";
+                }
+                break;
+            case 3:
+                response = controller.editContact(id, "email", newValue);
+                break;
+            default:
+                response = "Invalid input!";
+                break;
+        }
         System.out.println(response);
     }
 

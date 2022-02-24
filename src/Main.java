@@ -30,7 +30,8 @@ public class Main {
                 case (2):
                     service.addContactMenu();
                 case (3):
-                    //
+                    service.getAllContactsMenu();
+                    service.editContactMenu();
                     break;
                 case (4):
                     service.getAllContactsMenu();

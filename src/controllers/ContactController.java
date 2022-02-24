@@ -20,6 +20,12 @@ public class ContactController {
         return (created ? "Contact was created!" : "Contact creation was failed!");
     }
 
+    public String editContact(int id, String param, String newValue) {
+        boolean edited = repo.editContact(id, param, newValue);
+
+        return (edited ? "Contact was edited!" : "Contact edition was failed!");
+    }
+
     public String deleteContact(int id) {
         boolean deleted = repo.deleteContact(id);
 
